@@ -416,7 +416,7 @@ hap_serv_t *hap_serv_battery_service_create(uint8_t battery_level, uint8_t charg
  * @return Pointer to the service object on success
  * @return NULL on failure
  */
-hap_serv_t *hap_serv_carbon_dioxide_sensor_create(uint8_t carbon_dioxide_detected);
+hap_serv_t *hap_serv_carbon_dioxide_sensor_create(uint8_t carbon_dioxide_detected, float carbon_dioxide_level, float carbon_dioxide_peak);
 
 /** Fan v2 Service
  *

@@ -497,13 +497,19 @@ err:
     return NULL;
 }
 
-hap_serv_t *hap_serv_carbon_dioxide_sensor_create(uint8_t carbon_dioxide_detected)
+hap_serv_t *hap_serv_carbon_dioxide_sensor_create(uint8_t carbon_dioxide_detected, float carbon_dioxide_level, float carbon_dioxide_peak)
 {
     hap_serv_t *hs = hap_serv_create(HAP_SERV_UUID_CARBON_DIOXIDE_SENSOR);
     if (!hs) {
         return NULL;
     }
     if (hap_serv_add_char(hs, hap_char_carbon_dioxide_detected_create(carbon_dioxide_detected)) != HAP_SUCCESS) {
+        goto err;
+    }
+    if (hap_serv_add_char(hs, hap_char_carbon_dioxide_level_create(carbon_dioxide_level)) != HAP_SUCCESS) {
+        goto err;
+    }
+    if (hap_serv_add_char(hs, hap_char_carbon_dioxide_peak_level_create(carbon_dioxide_peak)) != HAP_SUCCESS) {
         goto err;
     }
     return hs;
